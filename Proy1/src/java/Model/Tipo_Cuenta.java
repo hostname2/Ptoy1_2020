@@ -9,15 +9,15 @@ package Model;
  *
  * @author sebas
  */
-public class tipo_cuenta {
+public class Tipo_Cuenta {
 
-    public tipo_cuenta(Integer id_tipo_cuenta, String descripcion, double tasa_interes) {
+    public Tipo_Cuenta(Integer id_tipo_cuenta, String descripcion, double tasa_interes) {
         this.id_tipo_cuenta = id_tipo_cuenta;
         this.descripcion = descripcion;
         this.tasa_interes = tasa_interes;
     }
 
-    public tipo_cuenta() {
+    public Tipo_Cuenta() {
         this.id_tipo_cuenta = null;
         this.descripcion = "";
         this.tasa_interes = 0;
