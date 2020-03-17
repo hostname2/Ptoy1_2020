@@ -11,7 +11,7 @@ package Model;
  */
 public class Usuario {
 
-    public Usuario(String id_usuario, String clave_acceso, Integer clave_vencida, int rol) {
+    public Usuario(String id_usuario, String clave_acceso, Integer clave_vencida, Integer rol) {
         this.id_usuario = id_usuario;
         this.clave_acceso = clave_acceso;
         this.clave_vencida = clave_vencida;
@@ -49,16 +49,16 @@ public class Usuario {
         this.clave_vencida = clave_vencida;
     }
 
-    public int getRol() {
+    public Integer getRol() {
         return rol;
     }
 
-    public void setRol(int rol) {
+    public void setRol(Integer rol) {
         this.rol = rol;
     }
 
     String id_usuario;
     String clave_acceso;
     Integer clave_vencida;
-    int rol;
+    Integer rol;
 }
