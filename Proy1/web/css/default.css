@@ -9,3 +9,18 @@ and open the template in the editor.
     Author     : the other guy 
 */
 
+body{
+
+}
+
+#wrapper{
+    font: 12pt sans-serif;
+}
+
+#contents h1{
+    font-size: 14pt;
+}
+
+from input,from button{
+    font: inherit;
+}
