@@ -10,6 +10,50 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <title>Sistema Bancario</title>
+        <link href="css/default.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap"
+              rel="stylesheet"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo-container">
+                <img style="width: 25px; height: 25px;" src="css/imagenes/logo.png" alt="logo"/>
+                <h4 class="logo">Stonks BANK</h4>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a class="nav-link" href="#">Servicios</a></li>
+                    <li><a class="nav-link" href="#">Contáctenos</a></li>
+                </ul>
+            </nav>
+            <div class="registro">
+                <button class="btn btn1">Login</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="presentacion">
+                <div class="introduccion">
+                    <h1></h1>
+                </div>
+            </section>
+        </main>
+    </body>
+
+
+</html>
+
+
+<%-- 
+<html>
+    <head>
+        <meta charset="UTF-8" />
         <title>Incio de Usuario</title>
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
     </head>
@@ -38,3 +82,4 @@
         </div>
     </body>
 </html>
+--%>

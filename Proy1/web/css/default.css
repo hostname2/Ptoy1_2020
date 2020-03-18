@@ -6,21 +6,102 @@ and open the template in the editor.
 /* 
     Created on : 10/03/2020, 11:38:33 PM
     Author     : sebas
-    Author     : the other guy 
+    Author     : the other guy did better
 */
 
-body{
 
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
-#wrapper{
-    font: 12pt sans-serif;
+body {
+    font-family: 'Poppins';
 }
 
-#contents h1{
-    font-size: 14pt;
+header{
+    display: flex;
+    width: 80%;
+    height: 10vh;
+    margin: auto;
+    align-items: center;
 }
 
-from input,from button{
-    font: inherit;
+.logo-container, .nav-links, .registro{
+    display: flex;
+}
+
+.logo-container{
+    flex: 1;
+}
+
+.logo{
+    font-weight: 400;
+    margin: 5px;
+}
+
+nav{
+    flex: 2;
+}
+
+.nav-links{
+    justify-content: space-around;
+    list-style: none; 
+}
+
+.nav-link{
+    color: #5f5f79;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.registro{
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.btn{
+    border: 1px solid #3498db;
+    background: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-family: "montserrat";
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.8s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn1{
+    color: #fff;
+}
+
+.btn1:hover {
+    color: #3498db;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: #3498db;
+    z-index: -1;
+    transition: 0.8s;
+} 
+
+.btn1::before{
+    top: 0;
+    border-radius: 0 0 50% 50%;
+}
+
+.btn1::before{
+    height: 180%;
+}
+
+.btn1:hover::before{
+    height: 0%;
 }

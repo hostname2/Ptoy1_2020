@@ -77,7 +77,7 @@ public class ServicioUsuario {
          try (Connection cnx = obtenerConexion();
                 Statement stm = cnx.createStatement();
                 // String cmd = String.format("INSERT INTO usuario(id,clave_acceso, clave_vencida, rol) VALUES ('%s','%s',%d,%d); ", u.getId_usuario(), u.getClave_acceso(),u.getClave_vencida(),u.getRol());
-                ResultSet rs = stm.executeQuery(cmd)) {
+                ResultSet rs = stm.executeQuery(CMD_INSERTAR)) {
         } catch (IOException
                 | ClassNotFoundException
                 | IllegalAccessException
