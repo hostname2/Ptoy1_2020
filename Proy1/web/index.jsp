@@ -38,11 +38,65 @@
         </header>
 
         <main>
-            <section class="presentacion">
-                <div class="introduccion">
-                    <h1></h1>
+            <section class="seccion-servicios">
+                <div class="inner-wigth">
+                    <h1>Nuestros <strong>Servicios</strong></h1>
+                    <div class="servicios owl-carousel">
+                        <div class="servicio">
+                            <div class="servicio-icon">
+                                <i class="fas fa-piggy-bank"></i>
+                            </div>
+                            <div class="servicio-name">Vincule su Cuenta</div>
+                            <div class="servicio-desc">adfadsfasdfa adfadsfadsf adsfadsfasdfa</div>
+                        </div>
+                        
+                        <div class="servicio">
+                            <div class="servicio-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="servicio-name">Consule su Cuenta y movimientos</div>
+                            <div class="servicio-desc">adfadsfasdfa adfadsfadsf adsfadsfasdfa</div>
+                        </div>
+                        
+                        <div class="servicio">
+                            <div class="servicio-icon">
+                                <i class="fas fa-money-check-alt"></i>
+                            </div>
+                            <div class="servicio-name">Tranferencia</div>
+                            <div class="servicio-desc">adfadsfasdfa adfadsfadsf adsfadsfasdfa</div>
+                        </div>
+                        
+                        <div class="servicio">
+                            <div class="servicio-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="servicio-name">Soporte</div>
+                            <div class="servicio-desc">adfadsfasdfa adfadsfadsf adsfadsfasdfa</div>
+                        </div>
+                    </div>
+                        
                 </div>
             </section>
+            <script>
+                $(".servicios").owlCarousel({
+                    margin:20,
+                    loop:true,
+                    autplay:true,
+                    autoplayTimeout:2000,
+                    autoplayHoverPause:true,
+                    responsive:{
+                        0:{
+                            items:1
+                        },
+                        600:{
+                            times:2
+                        },
+                        1000:{
+                            items:3
+                        }
+                    }
+                });
+            </script>
         </main>
     </body>
 

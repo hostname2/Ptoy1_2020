@@ -17,7 +17,7 @@ and open the template in the editor.
 }
 
 body {
-    font-family: 'Poppins';
+    font-family: "Poppins";
 }
 
 header{
@@ -37,7 +37,7 @@ header{
 }
 
 .logo{
-    font-weight: 400;
+    font-weight: 1000;
     margin: 5px;
 }
 
@@ -104,4 +104,86 @@ nav{
 
 .btn1:hover::before{
     height: 0%;
+}
+
+main{
+    background: #e8e8e8;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.seccion-servicios{
+    width: 100%;
+}
+
+.inner-wigth{
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;     
+}
+
+.seccion-servicios h1{
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 80px;
+}
+
+.seccion-servicios h1 strong{
+    color: #3498db;
+}
+
+.servicio{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.servicio-icon{
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    background: #6bb9f0;
+    border-radius: 50%;
+    color: #22313f;
+    line-height: 60px;
+    font-size: 25px;
+}
+
+.servicio-name{
+    font-weight: 600;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.servicio-desc{
+    max-width: 400px;
+    margin: auto;
+    color: #333;
+    font-size: 17px;
+}
+
+.owl-dots{
+    text-align: center;
+    margin-top: 40px;
+}
+
+.owl-dot{
+    width: 14px;
+    height: 14px;
+    background: #808080 !important;
+    margin: 0 6px;
+    border-radius: 14px;
+    outline: none;
+    transition: .3s linear;
+}
+
+.owl-dot-active{
+    width: 36px;
+    background: #3498db !important;
+}
+
+.owl-dot:hover{
+    width: 36px;
+    background: #3498db !important;
 }
