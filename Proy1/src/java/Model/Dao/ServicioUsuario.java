@@ -74,7 +74,17 @@ public class ServicioUsuario {
     }
     
     public void insertarUsuario(Usuario u){
-        //falta el insert
+         try (Connection cnx = obtenerConexion();
+                Statement stm = cnx.createStatement();
+                // String cmd = String.format("INSERT INTO usuario(id,clave_acceso, clave_vencida, rol) VALUES ('%s','%s',%d,%d); ", u.getId_usuario(), u.getClave_acceso(),u.getClave_vencida(),u.getRol());
+                ResultSet rs = stm.executeQuery(cmd)) {
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
     }
 
     public Connection obtenerConexion() throws
@@ -107,4 +117,6 @@ public class ServicioUsuario {
             = "SELECT id, clave_acceso, clave_vencida, rol FROM usuario WHERE id=?; ";
     private static final String CMD_LISTAR
             = "SELECT  id, clave_acceso, clave_vencida, rol FROM usuario; ";
+    private static final String CMD_INSERTAR
+            ="INSERT INTO usuario(id,clave_acceso, clave_vencida, rol) VALUES ('%s','%s',%d,%d); ";
 }
