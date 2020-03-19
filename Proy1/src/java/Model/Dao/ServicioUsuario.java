@@ -23,7 +23,8 @@ import java.util.Properties;
  * @author sebas
  */
 public class ServicioUsuario {
-        public Optional<Usuario> obtenerUsuario(String id) {
+
+    public Optional<Usuario> obtenerUsuario(String id) {
         Optional<Usuario> r = Optional.empty();
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(CMD_RECUPERAR);) {
@@ -56,10 +57,10 @@ public class ServicioUsuario {
                 ResultSet rs = stm.executeQuery(CMD_LISTAR)) {
             while (rs.next()) {
                 Usuario u = new Usuario(
-                            rs.getString("id_usuario"),
-                            rs.getString("clave_acceso"),
-                            rs.getInt("clave_vencida"),
-                            rs.getInt("rol")
+                        rs.getString("id_usuario"),
+                        rs.getString("clave_acceso"),
+                        rs.getInt("clave_vencida"),
+                        rs.getInt("rol")
                 );
                 r.add(u);
             }
@@ -72,12 +73,13 @@ public class ServicioUsuario {
         }
         return r;
     }
-    
-    public void insertarUsuario(Usuario u){
-         try (Connection cnx = obtenerConexion();
+
+    public void insertarUsuario(Usuario u) {
+        String inserta;
+        inserta = String.format("INSERT INTO usuario(id,clave_acceso, clave_vencida, rol) VALUES ('%s','%s',%d,%d); ", u.getId_usuario(), u.getClave_acceso(), u.getClave_vencida(), u.getRol());
+        try (Connection cnx = obtenerConexion();
                 Statement stm = cnx.createStatement();
-                // String cmd = String.format("INSERT INTO usuario(id,clave_acceso, clave_vencida, rol) VALUES ('%s','%s',%d,%d); ", u.getId_usuario(), u.getClave_acceso(),u.getClave_vencida(),u.getRol());
-                ResultSet rs = stm.executeQuery(CMD_INSERTAR)) {
+                ResultSet rs = stm.executeQuery(inserta)) {
         } catch (IOException
                 | ClassNotFoundException
                 | IllegalAccessException
@@ -102,7 +104,6 @@ public class ServicioUsuario {
         );
         return cnx;
     }
-    
 
     public static void main(String[] args) {
         ServicioUsuario su = new ServicioUsuario();
@@ -118,5 +119,5 @@ public class ServicioUsuario {
     private static final String CMD_LISTAR
             = "SELECT  id, clave_acceso, clave_vencida, rol FROM usuario; ";
     private static final String CMD_INSERTAR
-            ="INSERT INTO usuario(id,clave_acceso, clave_vencida, rol) VALUES ('%s','%s',%d,%d); ";
+            = "INSERT INTO usuario(id,clave_acceso, clave_vencida, rol) VALUES ('%s','%s',%d,%d); ";
 }
