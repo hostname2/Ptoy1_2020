@@ -6,6 +6,7 @@
 package Model;
 
 import com.sun.javafx.binding.StringFormatter;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,6 +20,18 @@ public class Cliente {
         this.apellidos = apellidos;
         this.nombre = nombre;
         this.telefono = telefono;
+        this.lista_cuenta = null;
+        this.lista_favorita = null;
+    }
+
+    public Cliente(String id_Cliente, Usuario ptr_Usuario, String apellidos, String nombre, String telefono, ArrayList<Cuenta> lista_cuenta, ArrayList<Favorita> lista_favorita) {
+        this.id_Cliente = id_Cliente;
+        this.ptr_Usuario = ptr_Usuario;
+        this.apellidos = apellidos;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.lista_cuenta = lista_cuenta;
+        this.lista_favorita = lista_favorita;
     }
 
     public Cliente() {
@@ -27,6 +40,8 @@ public class Cliente {
         this.apellidos = "";
         this.nombre = "";
         this.telefono = "";
+        this.lista_cuenta = null;
+        this.lista_favorita = null;
     }
 
     public String getId_Cliente() {
@@ -68,16 +83,34 @@ public class Cliente {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-    @Override
-    public String toString(){
-        return String.format("{%s, %s, %s, %s}", getId_Cliente(), getNombre(),getApellidos(), getTelefono());
+
+    public ArrayList<Cuenta> getLista_cuenta() {
+        return lista_cuenta;
     }
-            
+
+    public void setLista_cuenta(ArrayList<Cuenta> lista_cuenta) {
+        this.lista_cuenta = lista_cuenta;
+    }
+
+    public ArrayList<Favorita> getLista_favorita() {
+        return lista_favorita;
+    }
+
+    public void setLista_favorita(ArrayList<Favorita> lista_favorita) {
+        this.lista_favorita = lista_favorita;
+    }
+    
+
+    @Override
+    public String toString() {
+        return String.format("{%s, %s, %s, %s}", getId_Cliente(), getNombre(), getApellidos(), getTelefono());
+    }
 
     String id_Cliente;
     Usuario ptr_Usuario;
     String apellidos;
     String nombre;
     String telefono;
+    ArrayList<Cuenta> lista_cuenta;
+    ArrayList<Favorita> lista_favorita;
 }

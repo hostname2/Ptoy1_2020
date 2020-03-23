@@ -20,15 +20,27 @@ public class Transferencia {
         this.monto = monto;
         this.fecha = fecha;
         this.aplicado = aplicado;
+        this.cuenta = null;
     }
-    
-    public Transferencia(){
+
+    public Transferencia(Integer id_transferencia, Cuenta cuenta_origen, Cuenta cuenta_destino, double monto, Date fecha, Integer aplicado, Cuenta cuenta) {
+        this.id_transferencia = id_transferencia;
+        this.cuenta_origen = cuenta_origen;
+        this.cuenta_destino = cuenta_destino;
+        this.monto = monto;
+        this.fecha = fecha;
+        this.aplicado = aplicado;
+        this.cuenta = cuenta;
+    }
+
+    public Transferencia() {
         this.id_transferencia = null;
         this.cuenta_origen = null;
         this.cuenta_destino = null;
         this.monto = 0;
         this.fecha = null;
-        this.aplicado = 0;        
+        this.aplicado = 0;
+        this.cuenta = null;
     }
 
     public Integer getId_transferencia() {
@@ -78,16 +90,26 @@ public class Transferencia {
     public void setAplicado(Integer aplicado) {
         this.aplicado = aplicado;
     }
-    
-    @Override
-    public String toString(){
-        return String.format("{%d, %s, %s ,%.2f, %s, %d}",getId_transferencia(),getCuenta_origen().toString(),getCuenta_destino().toString(),getMonto(),getFecha().toString(),getAplicado());
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
     }
     
+
+    @Override
+    public String toString() {
+        return String.format("{%d, %s, %s ,%.2f, %s, %d}", getId_transferencia(), getCuenta_origen().toString(), getCuenta_destino().toString(), getMonto(), getFecha().toString(), getAplicado());
+    }
+
     Integer id_transferencia;
     Cuenta cuenta_origen;
     Cuenta cuenta_destino;
     double monto;
     Date fecha;
     Integer aplicado;
+    private Cuenta cuenta;
 }

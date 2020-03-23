@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sebas
@@ -17,10 +19,19 @@ public class Tipo_Cuenta {
         this.tasa_interes = tasa_interes;
     }
 
+    public Tipo_Cuenta(Integer id_tipo_cuenta, String descripcion, double tasa_interes, ArrayList<Cuenta> lista_cuenta) {
+        this.id_tipo_cuenta = id_tipo_cuenta;
+        this.descripcion = descripcion;
+        this.tasa_interes = tasa_interes;
+        this.lista_cuenta = lista_cuenta;
+    }
+
+    
     public Tipo_Cuenta() {
         this.id_tipo_cuenta = null;
         this.descripcion = "";
         this.tasa_interes = 0;
+        this.lista_cuenta = null;
     }
 
     public Integer getId_tipo_cuenta() {
@@ -47,6 +58,15 @@ public class Tipo_Cuenta {
         this.tasa_interes = tasa_interes;
     }
 
+    public ArrayList<Cuenta> getLista_cuenta() {
+        return lista_cuenta;
+    }
+
+    public void setLista_cuenta(ArrayList<Cuenta> lista_cuenta) {
+        this.lista_cuenta = lista_cuenta;
+    }
+    
+
     public String toString() {
         return String.format("{%d,%s,%.2f}", getId_tipo_cuenta(), getDescripcion(), getTasa_interes());
     }
@@ -54,4 +74,5 @@ public class Tipo_Cuenta {
     Integer id_tipo_cuenta;
     String descripcion;
     double tasa_interes;
+    ArrayList<Cuenta> lista_cuenta;
 }

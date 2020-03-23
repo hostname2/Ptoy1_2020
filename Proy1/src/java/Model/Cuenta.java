@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -24,6 +25,34 @@ public class Cuenta {
         this.saldo_inicial = saldo_inicial;
     }
 
+    public Cuenta(String numero_Cuneta, Tipo_Cuenta id_tipo_cuenta, Date fecha_creacion, Date Fecha_ultimaAplicacion, double limite_transferencia, Integer activa, double saldo_inicial, double saldo_final, Cliente cliente, Moneda moneda, ArrayList<Movimiento> lista_movimiento) {
+        this.numero_Cuneta = numero_Cuneta;
+        this.id_tipo_cuenta = id_tipo_cuenta;
+        this.fecha_creacion = fecha_creacion;
+        this.Fecha_ultimaAplicacion = Fecha_ultimaAplicacion;
+        this.limite_transferencia = limite_transferencia;
+        this.activa = activa;
+        this.saldo_inicial = saldo_inicial;
+        this.saldo_final = saldo_final;
+        this.cliente = cliente;
+        this.moneda = moneda;
+        this.lista_movimiento = lista_movimiento;
+    }
+
+    public Cuenta(String numero_Cuneta, Date fecha_creacion, Date Fecha_ultimaAplicacion, double limite_transferencia, Integer activa, double saldo_inicial, double saldo_final) {
+        this.numero_Cuneta = numero_Cuneta;
+        this.fecha_creacion = fecha_creacion;
+        this.Fecha_ultimaAplicacion = Fecha_ultimaAplicacion;
+        this.limite_transferencia = limite_transferencia;
+        this.activa = activa;
+        this.saldo_inicial = saldo_inicial;
+        this.saldo_final = saldo_final;
+        this.id_tipo_cuenta = null;
+        this.cliente = null;
+        this.moneda = null;
+        this.lista_movimiento = null;
+    }
+
     public Cuenta() {
         this.numero_Cuneta = "";
         this.id_tipo_cuenta = null;
@@ -33,6 +62,7 @@ public class Cuenta {
         this.limite_transferencia = 0;
         this.activa = null;
         this.saldo_inicial = 0;
+        this.lista_movimiento = null;
     }
 
     public String getNumero_Cuneta() {
@@ -98,17 +128,47 @@ public class Cuenta {
     public void setSaldo_inicial(double saldo_inicial) {
         this.saldo_inicial = saldo_inicial;
     }
+
+    public Date getFecha_ultimaAplicacion() {
+        return Fecha_ultimaAplicacion;
+    }
+
+    public void setFecha_ultimaAplicacion(Date Fecha_ultimaAplicacion) {
+        this.Fecha_ultimaAplicacion = Fecha_ultimaAplicacion;
+    }
+
+    public double getSaldo_final() {
+        return saldo_final;
+    }
+
+    public void setSaldo_final(double saldo_final) {
+        this.saldo_final = saldo_final;
+    }
+
+    public ArrayList<Movimiento> getLista_movimiento() {
+        return lista_movimiento;
+    }
+
+    public void setLista_movimiento(ArrayList<Movimiento> lista_movimiento) {
+        this.lista_movimiento = lista_movimiento;
+    }
+
     
-    public String toString(){
-        return String.format("{%s, %s, %s, %s, %s, %.2f, %d, %.2f}" ,getNumero_Cuneta(), getId_tipo_cuenta().toString(), getCliente().toString(), getMoneda().toString(), getFecha_creacion().toString(), getLimite_transferencia(), getActiva(), getSaldo_inicial());
+    public String toString() {
+        return String.format("{%s, %s, %s, %s, %s, %.2f, %d, %.2f}", getNumero_Cuneta(), getId_tipo_cuenta().toString(), getCliente().toString(), getMoneda().toString(), getFecha_creacion().toString(), getLimite_transferencia(), getActiva(), getSaldo_inicial());
     }
 
     String numero_Cuneta;
-    Tipo_Cuenta id_tipo_cuenta;
-    Cliente cliente;
-    Moneda moneda;
     Date fecha_creacion;
+    Date Fecha_ultimaAplicacion;
     double limite_transferencia;
     Integer activa;
     double saldo_inicial;
+    double saldo_final;
+
+    Tipo_Cuenta id_tipo_cuenta;
+    Cliente cliente;
+    Moneda moneda;
+    private ArrayList<Movimiento> lista_movimiento;
+
 }

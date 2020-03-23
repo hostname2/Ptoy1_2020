@@ -20,6 +20,7 @@ public class Movimiento {
         this.fecha = fecha;
         this.aplicado = aplicado;
         this.movimientocol = movimientocol;
+        this.cuenta = null;
     }
 
     public Movimiento() {
@@ -29,6 +30,7 @@ public class Movimiento {
         this.fecha = null;
         this.aplicado = null;
         this.movimientocol = "";
+        this.cuenta = null;
     }
 
     public Integer getId_movimiento() {
@@ -78,10 +80,20 @@ public class Movimiento {
     public void setMovimientocol(String movimientocol) {
         this.movimientocol = movimientocol;
     }
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
     
-    public String toString(){
-    return String.format("%d,%s,%.2f,%s,%d,%s", getId_movimiento(),getNum_cuenta(),getMonto(),getFecha().toString(),getAplicado(),getMovimientocol());
-}
+    
+
+    public String toString() {
+        return String.format("%d,%s,%.2f,%s,%d,%s", getId_movimiento(), getNum_cuenta(), getMonto(), getFecha().toString(), getAplicado(), getMovimientocol());
+    }
 
     Integer id_movimiento;
     String num_cuenta;
@@ -89,4 +101,5 @@ public class Movimiento {
     Date fecha;
     Integer aplicado;
     String movimientocol;
+    private Cuenta cuenta;
 }
