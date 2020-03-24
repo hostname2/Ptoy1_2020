@@ -5,7 +5,8 @@
  */
 package Model.Dao;
 
-import Model.Cliente;
+import Model.Moneda;
+import Model.Tipo_Cuenta;
 import datos.BaseDatos;
 import java.io.IOException;
 import java.sql.Connection;
@@ -15,29 +16,26 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Properties;
 
 /**
  *
  * @author sebas
  */
-public class ServicioCliente {
+public class ServicioTipo_Cuenta {
 
-    public Cliente obtenerCliente(String id) {
-        Cliente r = null;
+    public Tipo_Cuenta obtenerTipo_Cuenta(String id) {
+        Tipo_Cuenta r = null;
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(CMD_RECUPERAR);) {
             stm.clearParameters();
             stm.setString(1, id);
             try (ResultSet rs = stm.executeQuery()) {
                 if (rs.next()) {
-                    r = new Cliente(
-                            rs.getString("id_cliente"),
-                            su.obtenerUsuario(rs.getString("usuario_id_usuario")),
-                            rs.getString("apellidos"),
-                            rs.getString("nombre"),
-                            rs.getString("telefono")
+                    r = new Tipo_Cuenta(
+                            rs.getInt("id_tipo_cuenta"),
+                            rs.getString("descripcion"),
+                            rs.getDouble("tasa_interes")
                     );
                 }
             }
@@ -51,18 +49,16 @@ public class ServicioCliente {
         return r;
     }
 
-    public List<Cliente> obtenerListaClientes() {
-        List<Cliente> r = new ArrayList<>();
+    public List<Tipo_Cuenta> obtenerListaTipo_Cuentas() {
+        List<Tipo_Cuenta> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
                 Statement stm = cnx.createStatement();
                 ResultSet rs = stm.executeQuery(CMD_LISTAR)) {
             while (rs.next()) {
-                Cliente c = new Cliente(
-                        rs.getString("id_cliente"),
-                        su.obtenerUsuario(rs.getString("usuario_id_usuario")),
-                        rs.getString("apellidos"),
-                        rs.getString("nombre"),
-                        rs.getString("telefono")
+                Tipo_Cuenta c = new Tipo_Cuenta(
+                        rs.getInt("id_tipo_cuenta"),
+                        rs.getString("descripcion"),
+                        rs.getDouble("tasa_interes")
                 );
                 r.add(c);
             }
@@ -76,18 +72,15 @@ public class ServicioCliente {
         return r;
     }
 
-    public void agregarCliente(Cliente u) {
+    public void agregarTipo_Cuenta(Tipo_Cuenta u) {
 
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR)) {
             stm.clearParameters();
-            stm.setString(1, u.getId_Cliente());
-            stm.setString(2, u.getNombre());
-            stm.setString(3, u.getApellidos());
-            stm.setString(4, u.getTelefono());
-            
-            su.agregarUsuario(u.getPtr_Usuario());//se agrega el usuario
-            
+            stm.setInt(1, u.getId_tipo_cuenta());
+            stm.setString(2, u.getDescripcion());
+            stm.setDouble(3, u.getTasa_interes());
+
             if (stm.executeUpdate() != 1) {
                 throw new Exception("Error no determinado");
             }
@@ -114,21 +107,21 @@ public class ServicioCliente {
     }
 
     public static void main(String[] args) {
-        ServicioCliente su = new ServicioCliente();
-        List<Cliente> usuarios = su.obtenerListaClientes();
+        ServicioMoneda su = new ServicioMoneda();
+        List<Moneda> usuarios = su.obtenerListaMonedas();
         int i = 0;
-        for (Cliente u : usuarios) {
+        for (Moneda u : usuarios) {
             System.out.printf("%4d: %s,%n", ++i, u);
         }
     }
 
-    private final ServicioUsuario su = new ServicioUsuario();
-
     private static final String CMD_RECUPERAR
-            = "SELECT id_cliente, nombre, apellidos, telefono FROM cliente WHERE id_cliente=?; ";
+            = "SELECT id_tipo_cuenta, descripcion, tasa_interes FROM tipo_cuenta WHERE id_tipo_cuenta=?; ";
+    
     private static final String CMD_LISTAR
-            = "SELECT id_cliente, nombre, apellidos, telefono FROM cliente; ";
-    private static final String CMD_AGREGAR = "INSERT INTO cliente "
-            + "(id_cliente, nombre, apellidos, telefono) "
-            + "VALUES(?, ?, ?, ?); ";
+            = "SELECT id_tipo_cuenta, descripcion, tasa_interes FROM tipo_cuenta; ";
+    
+    private static final String CMD_AGREGAR = "INSERT INTO tipo_cuenta "
+            + "(id_tipo_cuenta, descripcion, tasa_interes) "
+            + "VALUES(?, ?, ?); ";
 }

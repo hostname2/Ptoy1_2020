@@ -17,6 +17,7 @@ public class Tipo_Cuenta {
         this.id_tipo_cuenta = id_tipo_cuenta;
         this.descripcion = descripcion;
         this.tasa_interes = tasa_interes;
+        this.lista_cuenta = null;
     }
 
     public Tipo_Cuenta(Integer id_tipo_cuenta, String descripcion, double tasa_interes, ArrayList<Cuenta> lista_cuenta) {
@@ -26,7 +27,6 @@ public class Tipo_Cuenta {
         this.lista_cuenta = lista_cuenta;
     }
 
-    
     public Tipo_Cuenta() {
         this.id_tipo_cuenta = null;
         this.descripcion = "";
@@ -65,7 +65,6 @@ public class Tipo_Cuenta {
     public void setLista_cuenta(ArrayList<Cuenta> lista_cuenta) {
         this.lista_cuenta = lista_cuenta;
     }
-    
 
     public String toString() {
         return String.format("{%d,%s,%.2f}", getId_tipo_cuenta(), getDescripcion(), getTasa_interes());
