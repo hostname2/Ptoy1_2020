@@ -23,6 +23,16 @@ public class Cliente {
         this.lista_cuenta = null;
         this.lista_favorita = null;
     }
+    
+        public Cliente(String id_Cliente, String apellidos, String nombre, String telefono) {//constructor sin usuario por parametro ni cuenta , ni favoritas
+        this.id_Cliente = id_Cliente;
+        this.ptr_Usuario = null;
+        this.apellidos = apellidos;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.lista_cuenta = null;
+        this.lista_favorita = null;
+    }
 
     public Cliente(String id_Cliente, Usuario ptr_Usuario, String apellidos, String nombre, String telefono, ArrayList<Cuenta> lista_cuenta, ArrayList<Favorita> lista_favorita) {
         this.id_Cliente = id_Cliente;

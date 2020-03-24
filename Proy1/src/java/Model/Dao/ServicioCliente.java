@@ -5,7 +5,7 @@
  */
 package Model.Dao;
 
-import Model.Usuario;
+import Model.Cliente;
 import datos.BaseDatos;
 import java.io.IOException;
 import java.sql.Connection;
@@ -22,21 +22,22 @@ import java.util.Properties;
  *
  * @author sebas
  */
-public class ServicioUsuario {
-    
-        public Usuario obtenerUsuario(String id) {
-        Usuario r = null;
+public class ServicioCliente {
+
+    public Cliente obtenerCliente(String id) {
+        Cliente r = null;
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(CMD_RECUPERAR);) {
             stm.clearParameters();
             stm.setString(1, id);
             try (ResultSet rs = stm.executeQuery()) {
                 if (rs.next()) {
-                    r = new Usuario(
-                            rs.getString("id_usuario"),
-                            rs.getString("clave_acceso"),
-                            rs.getInt("clave_vencida"),
-                            rs.getInt("rol")
+                    r = new Cliente(
+                            rs.getString("id_cliente"),
+                            su.obtenerUsuario(rs.getString("usuario_id_usuario")),
+                            rs.getString("apellidos"),
+                            rs.getString("nombre"),
+                            rs.getString("telefono")
                     );
                 }
             }
@@ -50,45 +51,20 @@ public class ServicioUsuario {
         return r;
     }
 
-//    public Optional<Usuario> obtenerUsuario(String id) {
-//        Optional<Usuario> r = Optional.empty();
-//        try (Connection cnx = obtenerConexion();
-//                PreparedStatement stm = cnx.prepareStatement(CMD_RECUPERAR);) {
-//            stm.clearParameters();
-//            stm.setString(1, id);
-//            try (ResultSet rs = stm.executeQuery()) {
-//                if (rs.next()) {
-//                    r = Optional.of(new Usuario(
-//                            rs.getString("id_usuario"),
-//                            rs.getString("clave_acceso"),
-//                            rs.getInt("clave_vencida"),
-//                            rs.getInt("rol")
-//                    ));
-//                }
-//            }
-//        } catch (IOException
-//                | ClassNotFoundException
-//                | IllegalAccessException
-//                | InstantiationException
-//                | SQLException ex) {
-//            System.err.printf("Excepción: '%s'%n", ex.getMessage());
-//        }
-//        return r;
-//    }
-
-    public List<Usuario> obtenerListaUsuarios() {
-        List<Usuario> r = new ArrayList<>();
+    public List<Cliente> obtenerListaClientes() {
+        List<Cliente> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
                 Statement stm = cnx.createStatement();
                 ResultSet rs = stm.executeQuery(CMD_LISTAR)) {
             while (rs.next()) {
-                Usuario u = new Usuario(
-                        rs.getString("id_usuario"),
-                        rs.getString("clave_acceso"),
-                        rs.getInt("clave_vencida"),
-                        rs.getInt("rol")
+                Cliente c = new Cliente(
+                        rs.getString("id_cliente"),
+                        su.obtenerUsuario(rs.getString("usuario_id_usuario")),
+                        rs.getString("apellidos"),
+                        rs.getString("nombre"),
+                        rs.getString("telefono")
                 );
-                r.add(u);
+                r.add(c);
             }
         } catch (IOException
                 | ClassNotFoundException
@@ -100,16 +76,18 @@ public class ServicioUsuario {
         return r;
     }
 
-    public void agregarUsuario(Usuario u) {
-  
+    public void agregarCliente(Cliente u) {
+
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR)) {
             stm.clearParameters();
-            stm.setString(1, u.getId_usuario());
-            stm.setString(2, u.getClave_acceso());
-            stm.setInt(3, u.getClave_vencida());
-            stm.setInt(4, u.getRol());
-
+            stm.setString(1, u.getId_Cliente());
+            stm.setString(2, u.getNombre());
+            stm.setString(3, u.getApellidos());
+            stm.setString(4, u.getTelefono());
+            
+            su.agregarUsuario(u.getPtr_Usuario());//se agrega el usuario
+            
             if (stm.executeUpdate() != 1) {
                 throw new Exception("Error no determinado");
             }
@@ -144,11 +122,13 @@ public class ServicioUsuario {
         }
     }
 
+    private final ServicioUsuario su = new ServicioUsuario();
+
     private static final String CMD_RECUPERAR
             = "SELECT id, clave_acceso, clave_vencida, rol FROM usuario WHERE id=?; ";
     private static final String CMD_LISTAR
             = "SELECT  id, clave_acceso, clave_vencida, rol FROM usuario; ";
-        private static final String CMD_AGREGAR = "INSERT INTO usuario "
-            + "( id, clave_acceso, clave_vencida, rol) "
+    private static final String CMD_AGREGAR = "INSERT INTO usuario "
+            + "(id_cliente, nombre, apellidos, telefono) "
             + "VALUES(?, ?, ?, ?); ";
 }
