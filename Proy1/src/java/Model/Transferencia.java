@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Transferencia {
 
-    public Transferencia(Integer id_transferencia, Cuenta cuenta_origen, Cuenta cuenta_destino, double monto, Date fecha, Integer aplicado) {
+    public Transferencia(Integer id_transferencia, String cuenta_origen, String cuenta_destino, double monto, Date fecha, Integer aplicado) {
         this.id_transferencia = id_transferencia;
         this.cuenta_origen = cuenta_origen;
         this.cuenta_destino = cuenta_destino;
@@ -23,7 +23,7 @@ public class Transferencia {
         this.cuenta = null;
     }
 
-    public Transferencia(Integer id_transferencia, Cuenta cuenta_origen, Cuenta cuenta_destino, double monto, Date fecha, Integer aplicado, Cuenta cuenta) {
+    public Transferencia(Integer id_transferencia, String cuenta_origen, String cuenta_destino, double monto, Date fecha, Integer aplicado, Cuenta cuenta) {
         this.id_transferencia = id_transferencia;
         this.cuenta_origen = cuenta_origen;
         this.cuenta_destino = cuenta_destino;
@@ -51,19 +51,19 @@ public class Transferencia {
         this.id_transferencia = id_transferencia;
     }
 
-    public Cuenta getCuenta_origen() {
+    public String getCuenta_origen() {
         return cuenta_origen;
     }
 
-    public void setCuenta_origen(Cuenta cuenta_origen) {
+    public void setCuenta_origen(String cuenta_origen) {
         this.cuenta_origen = cuenta_origen;
     }
 
-    public Cuenta getCuenta_destino() {
+    public String getCuenta_destino() {
         return cuenta_destino;
     }
 
-    public void setCuenta_destino(Cuenta cuenta_destino) {
+    public void setCuenta_destino(String cuenta_destino) {
         this.cuenta_destino = cuenta_destino;
     }
 
@@ -106,8 +106,8 @@ public class Transferencia {
     }
 
     Integer id_transferencia;
-    Cuenta cuenta_origen;
-    Cuenta cuenta_destino;
+    String cuenta_origen;
+    String cuenta_destino;
     double monto;
     Date fecha;
     Integer aplicado;

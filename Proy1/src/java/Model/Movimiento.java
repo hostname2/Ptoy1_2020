@@ -22,6 +22,16 @@ public class Movimiento {
         this.movimientocol = movimientocol;
         this.cuenta = null;
     }
+    
+        public Movimiento(Integer id_movimiento, String num_cuenta, double monto, Date fecha, Integer aplicado, String movimientocol, Cuenta cuenta) {
+        this.id_movimiento = id_movimiento;
+        this.num_cuenta = num_cuenta;
+        this.monto = monto;
+        this.fecha = fecha;
+        this.aplicado = aplicado;
+        this.movimientocol = movimientocol;
+        this.cuenta = cuenta;
+    }
 
     public Movimiento() {
         this.id_movimiento = null;
