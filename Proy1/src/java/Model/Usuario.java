@@ -56,6 +56,11 @@ public class Usuario {
     public void setRol(Integer rol) {
         this.rol = rol;
     }
+    
+    @Override
+    public String toString() {
+        return String.format("{%s, %s, %d, %d}", getId_usuario(),getClave_acceso(),getClave_vencida(),getRol());
+    }
 
     String id_usuario;
     String clave_acceso;

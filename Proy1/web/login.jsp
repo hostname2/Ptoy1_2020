@@ -18,13 +18,13 @@
         <div class="imagen-gb"></div>
         <div class="box">
             <h2>Login</h2>
-            <form>
+            <form method ="GET" action ="Loginservice" >
                 <div class="inputBox">
-                    <input type="text" name="" required="">
+                    <input type="text" name="id" required="" autofocus="">
                     <label>Identificación</label>
                 </div>
                 <div class="inputBox">
-                    <input type="password" name="" required="">
+                    <input type="password" name="id-password" required="">
                     <label>Clave de Acceso</label>
                 </div>
                 <input type="submit" name="" value="Login">

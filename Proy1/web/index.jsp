@@ -33,7 +33,9 @@
                 </ul>
             </nav>
             <div class="registro">
+                 <form method="GET" action="login.jsp">
                 <button class="btn btn1">Login</button>
+                 </form>
             </div>
         </header>
 

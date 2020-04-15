@@ -145,10 +145,10 @@ public class ServicioUsuario {
     }
 
     private static final String CMD_RECUPERAR
-            = "SELECT id, clave_acceso, clave_vencida, rol FROM usuario WHERE id=?; ";
+            = "SELECT id_usuario, clave_acceso, clave_vencida, rol FROM usuario WHERE id_usuario=?; ";
     private static final String CMD_LISTAR
-            = "SELECT  id, clave_acceso, clave_vencida, rol FROM usuario; ";
+            = "SELECT  id_usuario, clave_acceso, clave_vencida, rol FROM usuario; ";
         private static final String CMD_AGREGAR = "INSERT INTO usuario "
-            + "( id, clave_acceso, clave_vencida, rol) "
+            + "( id_usuario, clave_acceso, clave_vencida, rol) "
             + "VALUES(?, ?, ?, ?); ";
 }
