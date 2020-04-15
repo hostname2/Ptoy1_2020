@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>Loginservlet</servlet-name>
-        <servlet-class>Servicios.Loginservlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Loginservice</servlet-name>
         <servlet-class>Servicios.Loginservice</servlet-class>
         <init-param>
@@ -16,12 +12,6 @@
             <param-value>WEB-INF/vista/Cliente.jsp</param-value>
         </init-param>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>Loginservlet</servlet-name>
-        <url-pattern>/Loginservlet</url-pattern>
-        <url-pattern>/Administrador</url-pattern>
-        <url-pattern>/Cliente</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Loginservice</servlet-name>
         <url-pattern>/Loginservice</url-pattern>
