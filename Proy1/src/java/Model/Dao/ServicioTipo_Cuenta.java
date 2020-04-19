@@ -34,8 +34,7 @@ public class ServicioTipo_Cuenta {
                 if (rs.next()) {
                     r = new Tipo_Cuenta(
                             rs.getInt("id_tipo_cuenta"),
-                            rs.getString("descripcion"),
-                            rs.getDouble("tasa_interes")
+                            rs.getString("descripcion")
                     );
                 }
             }
@@ -57,8 +56,7 @@ public class ServicioTipo_Cuenta {
             while (rs.next()) {
                 Tipo_Cuenta c = new Tipo_Cuenta(
                         rs.getInt("id_tipo_cuenta"),
-                        rs.getString("descripcion"),
-                        rs.getDouble("tasa_interes")
+                        rs.getString("descripcion")
                 );
                 r.add(c);
             }
@@ -79,7 +77,6 @@ public class ServicioTipo_Cuenta {
             stm.clearParameters();
             stm.setInt(1, u.getId_tipo_cuenta());
             stm.setString(2, u.getDescripcion());
-            stm.setDouble(3, u.getTasa_interes());
 
             if (stm.executeUpdate() != 1) {
                 throw new Exception("Error no determinado");
@@ -116,12 +113,12 @@ public class ServicioTipo_Cuenta {
     }
 
     private static final String CMD_RECUPERAR
-            = "SELECT id_tipo_cuenta, descripcion, tasa_interes FROM tipo_cuenta WHERE id_tipo_cuenta=?; ";
+            = "SELECT id_tipo_cuenta, descripcion FROM tipo_cuenta WHERE id_tipo_cuenta=?; ";
     
     private static final String CMD_LISTAR
-            = "SELECT id_tipo_cuenta, descripcion, tasa_interes FROM tipo_cuenta; ";
+            = "SELECT id_tipo_cuenta, descripcion FROM tipo_cuenta; ";
     
     private static final String CMD_AGREGAR = "INSERT INTO tipo_cuenta "
-            + "(id_tipo_cuenta, descripcion, tasa_interes) "
-            + "VALUES(?, ?, ?); ";
+            + "(id_tipo_cuenta, descripcion) "
+            + "VALUES(?, ?); ";
 }

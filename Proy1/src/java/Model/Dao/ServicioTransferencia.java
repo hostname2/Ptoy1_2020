@@ -39,7 +39,8 @@ public class ServicioTransferencia {
                             rs.getString("cuenta_destino"),
                             rs.getDouble("monto"),
                             rs.getDate("fecha"),
-                            rs.getInt("aplicado")
+                            rs.getInt("aplicado"),
+                            rs.getString("detalle")
                     );
                 }
             }
@@ -60,12 +61,13 @@ public class ServicioTransferencia {
                 ResultSet rs = stm.executeQuery(CMD_LISTAR)) {
             while (rs.next()) {
                 Transferencia c = new Transferencia(
-                        rs.getInt("id_transferencia"),
-                        rs.getString("cuenta_origen"),
-                        rs.getString("cuenta_destino"),
-                        rs.getDouble("monto"),
-                        rs.getDate("fecha"),
-                        rs.getInt("aplicado")
+                            rs.getInt("id_transferencia"),
+                            rs.getString("cuenta_origen"),
+                            rs.getString("cuenta_destino"),
+                            rs.getDouble("monto"),
+                            rs.getDate("fecha"),
+                            rs.getInt("aplicado"),
+                            rs.getString("detalle")
                 );
                 r.add(c);
             }
@@ -91,6 +93,7 @@ public class ServicioTransferencia {
             stm.setDouble(4,u.getMonto());
             stm.setDate(5,(java.sql.Date)u.getFecha());
             stm.setInt(6,u.getAplicado());
+            stm.setString(7, u.getDetalle());
 
             if (stm.executeUpdate() != 1) {
                 throw new Exception("Error no determinado");
@@ -127,10 +130,10 @@ public class ServicioTransferencia {
     }
 
     private static final String CMD_RECUPERAR
-            = "SELECT id_transferencia, cuenta_origen, cuenta_destino, monto, fecha, aplicado FROM transferencia WHERE id_transferencia=?; ";
+            = "SELECT id_transferencia, cuenta_origen, cuenta_destino, monto, fecha, aplicado, detalle FROM transferencia WHERE id_transferencia=?; ";
     private static final String CMD_LISTAR
-            = "SELECT id_transferencia, cuenta_origen, cuenta_destino, monto, fecha, aplicado FROM transferencia; ";
+            = "SELECT id_transferencia, cuenta_origen, cuenta_destino, monto, fecha, aplicado, detalle FROM transferencia; ";
     private static final String CMD_AGREGAR = "INSERT INTO transferencia "
-            + "(id_transferencia, cuenta_origen, cuenta_destino, monto, fecha, aplicado) "
-            + "VALUES(?, ?, ?, ?, ?, ?); ";
+            + "(id_transferencia, cuenta_origen, cuenta_destino, monto, fecha, aplicado, detalle) "
+            + "VALUES(?, ?, ?, ?, ?, ?,?); ";
 }

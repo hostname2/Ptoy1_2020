@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Transferencia {
 
-    public Transferencia(Integer id_transferencia, String cuenta_origen, String cuenta_destino, double monto, Date fecha, Integer aplicado) {
+    public Transferencia(Integer id_transferencia, String cuenta_origen, String cuenta_destino, double monto, Date fecha, Integer aplicado, String detalle) {
         this.id_transferencia = id_transferencia;
         this.cuenta_origen = cuenta_origen;
         this.cuenta_destino = cuenta_destino;
@@ -21,6 +21,7 @@ public class Transferencia {
         this.fecha = fecha;
         this.aplicado = aplicado;
         this.cuenta = null;
+        this.detalle = detalle;
     }
 
     public Transferencia(Integer id_transferencia, String cuenta_origen, String cuenta_destino, double monto, Date fecha, Integer aplicado, Cuenta cuenta) {
@@ -98,8 +99,17 @@ public class Transferencia {
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
     }
-    
 
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
+    }
+
+    
+    
     @Override
     public String toString() {
         return String.format("{%d, %s, %s ,%.2f, %s, %d}", getId_transferencia(), getCuenta_origen().toString(), getCuenta_destino().toString(), getMonto(), getFecha().toString(), getAplicado());
@@ -111,5 +121,6 @@ public class Transferencia {
     double monto;
     Date fecha;
     Integer aplicado;
-    private Cuenta cuenta;
+    String detalle;
+    Cuenta cuenta;
 }
