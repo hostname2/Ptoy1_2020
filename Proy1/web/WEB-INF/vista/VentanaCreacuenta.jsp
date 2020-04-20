@@ -17,7 +17,7 @@
                 <h1>Registro Cliente</h1>
             </header>
             <div id="contents">
-                <form method ="POST" action="RegistroserviceCaja" class = "info">
+                <form method ="POST" action="CuentaRegistroadmin" class = "info">
                     <table class="tablaDatos">
                         <tr>
                             <td class ="Col1">num_cuenta</td>

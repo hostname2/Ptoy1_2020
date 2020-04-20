@@ -42,6 +42,8 @@
         <init-param>
             <param-name>VentanaCreacuenta</param-name>
             <param-value>WEB-INF/vista/VentanaCreacuenta.jsp</param-value>
+            <param-name>Administrador</param-name>
+            <param-value>WEB-INF/vista/Administrador.jsp</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

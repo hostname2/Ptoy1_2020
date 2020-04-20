@@ -25,8 +25,15 @@ public class CuentaRegistroadmin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/vista/VentanaCreacuenta.jsp");
-        dispatcher.forward(request, response);
+        String id_cuenta = request.getParameter("num_cuenta");
+        if (id_cuenta != null || "".equals(id_cuenta)) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/vista/Administrador.jsp");
+            dispatcher.forward(request, response);
+        } else {
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/vista/VentanaCreacuenta.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
