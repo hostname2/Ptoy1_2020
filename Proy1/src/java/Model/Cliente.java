@@ -14,6 +14,16 @@ import java.util.ArrayList;
  */
 public class Cliente {
 
+    public Cliente(String id_Cliente, String id_usuario, String apellidos, String nombre, String telefono) {
+        this.id_Cliente = id_Cliente;
+        this.id_usuario = id_usuario;
+        this.apellidos = apellidos;
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
+
+    
+    
     public Cliente(String id_Cliente, Usuario ptr_Usuario, String apellidos, String nombre, String telefono) {
         this.id_Cliente = id_Cliente;
         this.ptr_Usuario = ptr_Usuario;
@@ -109,6 +119,15 @@ public class Cliente {
     public void setLista_favorita(ArrayList<Favorita> lista_favorita) {
         this.lista_favorita = lista_favorita;
     }
+
+    public String getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(String id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+    
     
 
     @Override
@@ -118,6 +137,7 @@ public class Cliente {
 
     String id_Cliente;
     Usuario ptr_Usuario;
+    String id_usuario;
     String apellidos;
     String nombre;
     String telefono;

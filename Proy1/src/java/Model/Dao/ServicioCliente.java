@@ -34,7 +34,7 @@ public class ServicioCliente {
                 if (rs.next()) {
                     r = new Cliente(
                             rs.getString("id_cliente"),
-                            su.obtenerUsuario(rs.getString("usuario_id_usuario")),
+                            rs.getString("usuario_id_usuario"),
                             rs.getString("apellidos"),
                             rs.getString("nombre"),
                             rs.getString("telefono")
@@ -58,11 +58,11 @@ public class ServicioCliente {
                 ResultSet rs = stm.executeQuery(CMD_LISTAR)) {
             while (rs.next()) {
                 Cliente c = new Cliente(
-                        rs.getString("id_cliente"),
-                        su.obtenerUsuario(rs.getString("usuario_id_usuario")),
-                        rs.getString("apellidos"),
-                        rs.getString("nombre"),
-                        rs.getString("telefono")
+                            rs.getString("id_cliente"),
+                            rs.getString("usuario_id_usuario"),
+                            rs.getString("apellidos"),
+                            rs.getString("nombre"),
+                            rs.getString("telefono")
                 );
                 r.add(c);
             }
@@ -82,11 +82,10 @@ public class ServicioCliente {
                 PreparedStatement stm = cnx.prepareStatement(CMD_AGREGAR)) {
             stm.clearParameters();
             stm.setString(1, u.getId_Cliente());
-            stm.setString(2, u.getNombre());
-            stm.setString(3, u.getApellidos());
-            stm.setString(4, u.getTelefono());
-            
-            su.agregarUsuario(u.getPtr_Usuario());//se agrega el usuario
+            stm.setString(2, u.getId_usuario());
+            stm.setString(3, u.getNombre());
+            stm.setString(4, u.getApellidos());
+            stm.setString(5, u.getTelefono());
             
             if (stm.executeUpdate() != 1) {
                 throw new Exception("Error no determinado");
@@ -125,10 +124,10 @@ public class ServicioCliente {
     private final ServicioUsuario su = new ServicioUsuario();
 
     private static final String CMD_RECUPERAR
-            = "SELECT id_cliente, nombre, apellidos, telefono FROM cliente WHERE id_cliente=?; ";
+            = "SELECT id_cliente, usuario_id_usuario, nombre, apellidos, telefono FROM cliente WHERE usuario_id_usuario=?; ";
     private static final String CMD_LISTAR
-            = "SELECT id_cliente, nombre, apellidos, telefono FROM cliente; ";
+            = "SELECT id_cliente, usuario_id_usuario, nombre, apellidos, telefono FROM cliente; ";
     private static final String CMD_AGREGAR = "INSERT INTO cliente "
-            + "(id_cliente, nombre, apellidos, telefono) "
-            + "VALUES(?, ?, ?, ?); ";
+            + "(id_cliente, usuario_id_usuario, nombre, apellidos, telefono) "
+            + "VALUES(?, ?, ?, ?,?); ";
 }

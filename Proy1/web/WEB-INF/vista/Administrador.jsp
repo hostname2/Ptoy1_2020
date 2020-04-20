@@ -5,6 +5,8 @@
 --%>
 
 
+<%@page import="Model.Cliente"%>
+<%@page import="Model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,25 +21,67 @@
     </head>
     <body>
         <p>Soy Administrador</p>
-        <div class="contenedor">
-            <a href="#" class="btn-menu">Menu<i class="icono fas fa-bars"></i></a> 
+        <div class ="contenido">
+            <div class="contenedor">
+                <a href="#" class="btn-menu">Menu<i class="icono fas fa-bars"></i></a> 
 
-            <ul class="menu">
-                <li><a href="#"><i class="icono izquierda fas fa-home"></i>Inicio</a></li>
-                <li><a href="#"><i class="icono izquierda fas fa-user"></i> Cliente <i class="icono derecha fas fa-chevron-down"></i></a>
-                    <ul >
-                        <li><a href="#">Iniciar Cliente</a></li>
-                        <li><a href="#">Item 2</a></li>
-                        <li><a href="#">Cerrar Cliente</a></li>
-                    </ul>              
-                </li>
-                <li><a href="#"><i class="icono izquierda fas fa-info"></i>Info Cajero</a></li>
-                <li><a href="#"><i class="icono izquierda fas fa-sign-out-alt"></i>Salir</a></li>
-            </ul>
+                <ul class="menu">
+                    <li><a href="index.jsp"><i class="icono izquierda fas fa-home"></i>Inicio</a></li>
+                    <li><a href="#"><i class="icono izquierda fas fa-user"></i> Cliente <i class="icono derecha fas fa-chevron-down"></i></a>
+                        <ul >
+                            <li><a href="Redireccionadmin1">Iniciar Cliente</a></li>
+                            <li><a href="CuentaRegistroadmin">Abrir Cuenta</a></li>
+                            <li><a href="#">Deposito</a></li>
+                            <li><a href="#">Retiro</a></li>
+                            <li><a href="#">Transferencia</a></li>
+                            <li><a href="#">Cerrar Cliente</a></li>
+                        </ul>              
+                    </li>
+                    <li><a href="RegistroserviceCaja">Registrar Cliente</a></li>
+                    <li><a href="#"><i class="icono izquierda fas fa-info"></i>Info Cajero</a></li>
+                    <li><a href="#"><i class="icono izquierda fas fa-sign-out-alt"></i>Salir</a></li>
+                </ul>
+            </div>
+            <div clas="info-cliente">
+                <%
+                    Cliente u = (Cliente) request.getAttribute("registroCliente");
+                    if (u != null) {
+                %>
+                <table class="tablaDatos">
+                    <tr>
+                        <td class="Col1">Datos Usuario</td>
+                    </tr>
+                    <tr>
+                        <td class="Col1">Id</td>
+                        <td class="Col2"><%= u.getId_Cliente()%> 
+                    </tr>
+                    <tr>
+                        <td class="Col1">Nombre</td>
+                        <td class="Col2"><%= u.getNombre()%>
+                    </tr>
+                    <tr>
+                        <td class="Col1">IdUsuario</td>
+                        <td class="Col2"><%= u.getId_usuario()%>
+                    </tr>
+                    <tr>
+                        <td class="Col1">Apellidos</td>
+                        <td class="Col2"><%= u.getApellidos()%> 
+                    </tr>
+                    <tr>
+                        <td class="Col1">Clave</td>
+                        <td class="Col2"><%= u.getTelefono()%> 
+                    </tr>
+                </table>
+                <%} else {%>
+                <p class="mensajeError">
+                    No se encuentra : <strong>Bitch ass do it as it is suposed to be</strong>.
+                </p>
+                <%}%>
+
+            </div>
+
+
         </div>
-
-
-
         <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script src="js/main.js"></script>
     </body>

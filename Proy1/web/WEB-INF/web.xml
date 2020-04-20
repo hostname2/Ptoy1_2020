@@ -12,13 +12,65 @@
             <param-value>WEB-INF/vista/Cliente.jsp</param-value>
         </init-param>
     </servlet>
+    <servlet>
+        <servlet-name>Redireccionadmin1</servlet-name>
+        <servlet-class>Servicios.Redireccionadmin1</servlet-class>
+        <init-param>
+            <param-name>adminlogincliente</param-name>
+            <param-value>WEB-INF/vista/adminlogincliente.jsp</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginserviceCaja</servlet-name>
+        <servlet-class>Servicios.LoginserviceCaja</servlet-class>
+        <init-param>
+            <param-name>Administrador</param-name>
+            <param-value>WEB-INF/vista/Administrador.jsp</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistroserviceCaja</servlet-name>
+        <servlet-class>Servicios.RegistroserviceCaja</servlet-class>
+        <init-param>
+            <param-name>RegistroCliente</param-name>
+            <param-value>WEB-INF/vista/RegistroCliente.jsp</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>CuentaRegistroadmin</servlet-name>
+        <servlet-class>Servicios.CuentaRegistroadmin</servlet-class>
+        <init-param>
+            <param-name>VentanaCreacuenta</param-name>
+            <param-value>WEB-INF/vista/VentanaCreacuenta.jsp</param-value>
+        </init-param>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Loginservice</servlet-name>
         <url-pattern>/Loginservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Redireccionadmin1</servlet-name>
+        <url-pattern>/Redireccionadmin1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginserviceCaja</servlet-name>
+        <url-pattern>/LoginserviceCaja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroserviceCaja</servlet-name>
+        <url-pattern>/RegistroserviceCaja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CuentaRegistroadmin</servlet-name>
+        <url-pattern>/CuentaRegistroadmin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <init-param>
+        <param-name>Cliente</param-name>
+        <param-value>WEB-INF/vista/Cliente.jsp</param-value>
+    </init-param>
 </web-app>
