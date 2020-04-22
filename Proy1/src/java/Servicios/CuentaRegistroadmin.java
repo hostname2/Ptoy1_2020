@@ -5,8 +5,16 @@
  */
 package Servicios;
 
+import Model.Cuenta;
+import Model.Dao.ServicioCuenta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,9 +32,39 @@ public class CuentaRegistroadmin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        String id_cuenta = request.getParameter("num_cuenta");
-        if (id_cuenta != null || "".equals(id_cuenta)) {
+        String num_cuenta = request.getParameter("num_cuenta");
+        String cliente_id_cliente = request.getParameter("cliente_id_cliente");
+        String tipo_cuenta_id_tipo_cuenta = request.getParameter("tipo_cuenta_id_tipo_cuenta");
+        String moneda_nombre = request.getParameter("moneda_nombre");
+        String fecha_creacion = request.getParameter("fecha_creacion");
+        String limite_transferencia_diaria = request.getParameter("limite_transferencia_diaria");
+        String activa = request.getParameter("activa");
+        String saldo_inicial = request.getParameter("saldo_inicial");
+        String fecha_ultima_aplicacion = request.getParameter("fecha_ultima_aplicacion");
+        String saldo_final = request.getParameter("saldo_final");
+
+        if (num_cuenta != null || "".equals(num_cuenta)) {
+            Cuenta c = new Cuenta();
+
+            c.setNumero_Cuneta(num_cuenta);
+            c.setId_cliente(cliente_id_cliente);
+            c.setId_cuenta(Integer.parseInt(tipo_cuenta_id_tipo_cuenta));
+            c.setId_moneda(moneda_nombre);
+
+            c.setLimite_transferencia(Double.valueOf(limite_transferencia_diaria));
+            c.setActiva(Integer.parseInt(activa));
+            c.setSaldo_inicial(Double.valueOf(saldo_inicial));
+            try {
+                c.setFecha_creacion(sdf.parse(fecha_creacion));
+                c.setFecha_ultimaAplicacion(sdf.parse(fecha_ultima_aplicacion));
+            } catch (ParseException ex) {
+                System.out.print("error en el parse de fecha servlet CuentaRegistroAdmin");
+            }
+            c.setSaldo_final(Double.valueOf(saldo_final));
+            servicio.agregarCuenta(c);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/vista/Administrador.jsp");
             dispatcher.forward(request, response);
         } else {
@@ -35,6 +73,8 @@ public class CuentaRegistroadmin extends HttpServlet {
             dispatcher.forward(request, response);
         }
     }
+
+    private final ServicioCuenta servicio = new ServicioCuenta();
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

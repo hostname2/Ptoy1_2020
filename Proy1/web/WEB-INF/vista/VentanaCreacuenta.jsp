@@ -38,7 +38,7 @@
                             </td>
                             <td class ="Col1">fecha_creacion</td>
                             <td class="Col2">
-                                <input type ="text" name ="fecha_creacion"  placeholder="digite clave"/>
+                                <input type ="date" name ="fecha_creacion"  placeholder="digite clave"/>
                             </td>
                             <td class ="Col1">limite_transferencia_diaria</td>
                             <td class="Col2">
@@ -54,7 +54,7 @@
                             </td>
                             <td class ="Col1">fecha_ultima_aplicacion</td>
                             <td class="Col2">
-                                <input type ="text" name ="fecha_ultima_aplicacion"  placeholder="digite clave"/>
+                                <input type ="date" name ="fecha_ultima_aplicacion"  placeholder="digite clave"/>
                             </td>
                             <td class ="Col1">saldo_final</td>
                             <td class="Col2">

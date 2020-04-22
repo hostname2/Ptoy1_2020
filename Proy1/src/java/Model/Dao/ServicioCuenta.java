@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import stringUtils.DateConversion;
 
 /**
  *
@@ -94,11 +95,12 @@ public class ServicioCuenta {
             stm.setInt(2, u.getId_cuenta());
             stm.setString(3, u.getId_cliente());
             stm.setString(4, u.getId_moneda());
-            stm.setDate(5, (java.sql.Date)u.getFecha_creacion());
+            stm.setDate(5, DateConversion.util2sql(u.getFecha_creacion()));
+           // stm.setDate(5, (java.sql.Date)u.getFecha_creacion());
             stm.setDouble(6, u.getLimite_transferencia());
             stm.setInt(7, u.getActiva());
             stm.setDouble(8, u.getSaldo_inicial());
-            stm.setDate(9, (java.sql.Date)u.getFecha_ultimaAplicacion());
+            stm.setDate(9,DateConversion.util2sql(u.getFecha_ultimaAplicacion()));
             stm.setDouble(10, u.getSaldo_final());
             
             if (stm.executeUpdate() != 1) {
