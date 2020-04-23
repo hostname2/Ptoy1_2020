@@ -46,7 +46,7 @@ public class CuentaRegistroadmin extends HttpServlet {
         String fecha_ultima_aplicacion = request.getParameter("fecha_ultima_aplicacion");
         String saldo_final = request.getParameter("saldo_final");
 
-        if (num_cuenta != null || "".equals(num_cuenta)) {
+        if (num_cuenta != null && !"".equals(num_cuenta)) {
             Cuenta c = new Cuenta();
 
             c.setNumero_Cuneta(num_cuenta);

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author sebas
  */
-@WebServlet(name = "Loginservice", urlPatterns = {"/Loginservice", "/adminlogincliente"})
+@WebServlet(name = "Redireccionadmin1", urlPatterns = {"/Loginservice", "/adminlogincliente"})
 public class Redireccionadmin1 extends HttpServlet {
 
     /**

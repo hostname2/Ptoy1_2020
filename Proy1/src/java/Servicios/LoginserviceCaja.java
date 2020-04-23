@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author sebas
  */
-@WebServlet(name = "Loginservice", urlPatterns = {"/LoginserviceCaja", "/Administrador"})
+@WebServlet(name = "LoginserviceCaja", urlPatterns = {"/LoginserviceCaja", "/Administrador"})
 public class LoginserviceCaja extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

@@ -42,6 +42,44 @@
         <init-param>
             <param-name>VentanaCreacuenta</param-name>
             <param-value>WEB-INF/vista/VentanaCreacuenta.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>Administrador</param-name>
+            <param-value>WEB-INF/vista/Administrador.jsp</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>DepositoserviceCaja</servlet-name>
+        <servlet-class>Servicios.DepositoserviceCaja</servlet-class>
+        <init-param>
+            <param-name>DepositoCaja</param-name>
+            <param-value>WEB-INF/vista/DepositoCaja.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>Administrador</param-name>
+            <param-value>WEB-INF/vista/Administrador.jsp</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>RetiroserviceCaja</servlet-name>
+        <servlet-class>Servicios.RetiroserviceCaja</servlet-class>
+        <init-param>
+            <param-name>RetiroCaja</param-name>
+            <param-value>WEB-INF/vista/RetiroCaja.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>Administrador</param-name>
+            <param-value>WEB-INF/vista/Administrador.jsp</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>TransferenciaserviceCaja</servlet-name>
+        <servlet-class>Servicios.TransferenciaserviceCaja</servlet-class>
+        <init-param>
+            <param-name>TransferenciaCaja</param-name>
+            <param-value>WEB-INF/vista/Transferencia.jsp</param-value>
+        </init-param>
+        <init-param>
             <param-name>Administrador</param-name>
             <param-value>WEB-INF/vista/Administrador.jsp</param-value>
         </init-param>
@@ -65,6 +103,18 @@
     <servlet-mapping>
         <servlet-name>CuentaRegistroadmin</servlet-name>
         <url-pattern>/CuentaRegistroadmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DepositoserviceCaja</servlet-name>
+        <url-pattern>/DepositoserviceCaja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RetiroserviceCaja</servlet-name>
+        <url-pattern>/RetiroserviceCaja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TransferenciaserviceCaja</servlet-name>
+        <url-pattern>/TransferenciaserviceCaja</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

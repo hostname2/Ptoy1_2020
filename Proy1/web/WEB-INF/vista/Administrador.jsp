@@ -31,9 +31,9 @@
                         <ul >
                             <li><a href="Redireccionadmin1">Iniciar Cliente</a></li>
                             <li><a href="CuentaRegistroadmin">Abrir Cuenta</a></li>
-                            <li><a href="#">Deposito</a></li>
-                            <li><a href="#">Retiro</a></li>
-                            <li><a href="#">Transferencia</a></li>
+                            <li><a href="DepositoserviceCaja">Deposito</a></li>
+                            <li><a href="RetiroserviceCaja">Retiro</a></li>
+                            <li><a href="TransferenciaserviceCaja">Transferencia</a></li>
                             <li><a href="#">Cerrar Cliente</a></li>
                         </ul>              
                     </li>
