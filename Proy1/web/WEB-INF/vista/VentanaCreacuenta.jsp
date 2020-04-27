@@ -25,13 +25,13 @@
                     <form method ="POST" action="CuentaRegistroadmin" class = "info">
                         <table class="tablaDatos">
                             <tr>
-                                <td class ="Col1">num_cuenta</td>
+                                <td class ="Col1">numero de cuenta</td>
                                 <td class="Col2">
                                     <input type ="text" name ="num_cuenta" autofocus ="autofocus" placeholder="###-###-###"/>
                                 </td>
                             </tr>
                             <tr>
-                                <td class ="Col1">tipo_cuenta_id_tipo_cuenta</td>
+                                <td class ="Col1">tipo de cuenta</td>
                                 <td>
                                     <select name="tipo_cuenta_id_tipo_cuenta">
                                         <option value = "1">Cuenta de debito</option>
@@ -43,13 +43,13 @@
                             </td>--%>
                         </tr>
                         <tr>
-                            <td class ="Col1">cliente_id_cliente</td>
+                            <td class ="Col1">ID cliente</td>
                             <td class="Col2">
                                 <input type ="text" name ="cliente_id_cliente"  placeholder="id cliente "/>
                             </td>
                         </tr>
                         <tr>
-                            <td class ="Col1">moneda_nombre</td>
+                            <td class ="Col1">Moneda</td>
                             <td>
                                 <select name ="moneda_nombre" >
                                     <%
@@ -69,42 +69,42 @@
                                 <input type ="text" name ="moneda_nombre"  placeholder="tipo de moneda"/>
                             </td>--%>
                         </tr>
+                        <%--   <tr>
+                               <td class ="Col1">Fecha Creacion</td>
+                               <td class="Col2">
+                                   <input type ="date" name ="fecha_creacion"  placeholder=""/>
+                               </td>
+                           </tr>--%>
                         <tr>
-                            <td class ="Col1">fecha_creacion</td>
-                            <td class="Col2">
-                                <input type ="date" name ="fecha_creacion"  placeholder=""/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class ="Col1">limite_transferencia_diaria</td>
+                            <td class ="Col1">Limite transferencia diaria</td>
                             <td class="Col2">
                                 <input type ="text" name ="limite_transferencia_diaria"  placeholder="Limite"/>
                             </td>
                         </tr>
+                        <%--  <tr>
+                              <td class ="Col1">activa</td>
+                              <td class="Col2">
+                                  <input type ="text" name ="activa"  placeholder="1 o 2"/>
+                              </td>
+                          </tr>--%>
                         <tr>
-                            <td class ="Col1">activa</td>
-                            <td class="Col2">
-                                <input type ="text" name ="activa"  placeholder="1 o 2"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class ="Col1">saldo_inicial</td>
+                            <td class ="Col1">Saldo Inicial</td>
                             <td class="Col2">
                                 <input type ="text" name ="saldo_inicial"  placeholder="slado inicial"/>
                             </td>
                         </tr>
-                        <tr>
-                            <td class ="Col1">fecha_ultima_aplicacion</td>
+                        <%--<tr>
+                            <td class ="Col1">Fecha ultima aplicacion</td>
                             <td class="Col2">
                                 <input type ="date" name ="fecha_ultima_aplicacion"  placeholder=""/>
                             </td>
-                        </tr>
-                        <tr>
-                            <td class ="Col1">saldo_final</td>
+                        </tr>--%>
+                        <%--<tr>
+                            <td class ="Col1">Sal</td>
                             <td class="Col2">
                                 <input type ="text" name ="saldo_final"  placeholder="saldo final"/>
                             </td>                            
-                        </tr>
+                        </tr>--%>
                         <tr>
                             <td>
                                 <button type="submit">Crear Cuenta</button>
