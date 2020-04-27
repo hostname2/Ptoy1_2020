@@ -32,19 +32,20 @@ public class CuentaRegistroadmin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         String num_cuenta = request.getParameter("num_cuenta");
         String cliente_id_cliente = request.getParameter("cliente_id_cliente");
         String tipo_cuenta_id_tipo_cuenta = request.getParameter("tipo_cuenta_id_tipo_cuenta");
         String moneda_nombre = request.getParameter("moneda_nombre");
-        String fecha_creacion = request.getParameter("fecha_creacion");
+        //String fecha_creacion = request.getParameter("fecha_creacion");
+        Date fecha_creacion = new Date();
         String limite_transferencia_diaria = request.getParameter("limite_transferencia_diaria");
         String activa = request.getParameter("activa");
         String saldo_inicial = request.getParameter("saldo_inicial");
         String fecha_ultima_aplicacion = request.getParameter("fecha_ultima_aplicacion");
-        String saldo_final = request.getParameter("saldo_final");
+        String saldo_final = request.getParameter("saldo_inicial");
 
         if (num_cuenta != null && !"".equals(num_cuenta)) {
             Cuenta c = new Cuenta();
@@ -55,14 +56,15 @@ public class CuentaRegistroadmin extends HttpServlet {
             c.setId_moneda(moneda_nombre);
 
             c.setLimite_transferencia(Double.valueOf(limite_transferencia_diaria));
-            c.setActiva(Integer.parseInt(activa));
+            c.setActiva(Integer.parseInt("1"));
+//                        c.setActiva(Integer.parseInt(activa));
             c.setSaldo_inicial(Double.valueOf(saldo_inicial));
-            try {
-                c.setFecha_creacion(sdf.parse(fecha_creacion));
-                c.setFecha_ultimaAplicacion(sdf.parse(fecha_ultima_aplicacion));
-            } catch (ParseException ex) {
-                System.out.print("error en el parse de fecha servlet CuentaRegistroAdmin");
-            }
+//            try {
+            c.setFecha_creacion(fecha_creacion);
+            c.setFecha_ultimaAplicacion(fecha_creacion);
+//            } catch (ParseException ex) {
+//                System.out.print("error en el parse de fecha servlet CuentaRegistroAdmin");
+//            }
             c.setSaldo_final(Double.valueOf(saldo_final));
             servicio.agregarCuenta(c);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/vista/Administrador.jsp");
