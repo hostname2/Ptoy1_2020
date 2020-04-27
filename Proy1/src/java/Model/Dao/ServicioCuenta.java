@@ -38,7 +38,7 @@ public class ServicioCuenta {
                             rs.getDate("fecha_ultima_aplicacion"),
                             rs.getDouble("limite_transferencia_diaria"),
                             rs.getInt("activa"),
-                            rs.getDouble("saldo_final"),
+                            rs.getDouble("saldo_inicial"),
                             rs.getDouble("saldo_final"),
                             rs.getString("cliente_id_cliente"),
                             rs.getString("moneda_nombre"),
@@ -70,7 +70,7 @@ public class ServicioCuenta {
                             rs.getDate("fecha_ultima_aplicacion"),
                             rs.getDouble("limite_transferencia_diaria"),
                             rs.getInt("activa"),
-                            rs.getDouble("saldo_final"),
+                            rs.getDouble("saldo_inicial"),
                             rs.getDouble("saldo_final"),
                             rs.getString("cliente_id_cliente"),
                             rs.getString("moneda_nombre"),
@@ -121,6 +121,45 @@ public class ServicioCuenta {
         return r;
     }
 
+    public String obtenerTablaCuentas(String id) {
+        StringBuilder r = new StringBuilder();
+        r.append("<table class=\"tablaCuentas\">");
+
+        r.append("<thead>");
+        r.append("<th >Nº de Cuenta</th>");
+        r.append("<th >Cliente</th>");
+        r.append("<th >Moneda</th>");
+        r.append("<th >Activa</th>");
+        r.append("<th >Saldo Inicial</th>");
+        r.append("<th >Fecha de creación</th>");
+        r.append("<th >Tipo de Cuenta</th>");
+        r.append("<th >Saldo Final</th>");
+        r.append("</thead>");
+
+        r.append("<tbody>");
+        List<Cuenta> cuentas = obtenerListaCuentabyiduser(id);
+        for (Cuenta e : cuentas) {
+            r.append("<tr>");
+            r.append(String.format("<td ><label>%s</label></td>", e.getNumero_Cuneta()));
+            r.append(String.format("<td ><label>%s</label></td>", e.getId_cliente()));
+            r.append(String.format("<td ><label>%s</label></td>", e.getId_moneda()));
+            r.append(String.format("<td ><label>%d</label></td>", e.getActiva()));
+            r.append(String.format("<td ><label>%f</label></td>", e.getSaldo_inicial()));
+            r.append(String.format("<td ><label>%s</label></td>", e.getFecha_creacion().toString()));
+            r.append(String.format("<td ><label>%s</label></td>", e.getId_cuenta()));
+            r.append(String.format("<td ><label>%f</label></td>", e.getSaldo_final()));
+            r.append("</tr>");
+        }
+        r.append("</tbody>");
+
+        r.append("</table>");
+        return r.toString();
+    }
+
+    public static String obtenerTablaCuentas(ServicioCuenta instancia, String id) {
+        return instancia.obtenerTablaCuentas(id);
+    }
+
     public List<Cuenta> obtenerListaCuenta() {
         List<Cuenta> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
@@ -133,7 +172,7 @@ public class ServicioCuenta {
                         rs.getDate("fecha_ultima_aplicacion"),
                         rs.getDouble("limite_transferencia_diaria"),
                         rs.getInt("activa"),
-                        rs.getDouble("saldo_final"),
+                        rs.getDouble("saldo_inicial"),
                         rs.getDouble("saldo_final"),
                         rs.getString("cliente_id_cliente"),
                         rs.getString("moneda_nombre"),
@@ -210,15 +249,28 @@ public class ServicioCuenta {
 
     public static void main(String[] args) {
         ServicioCuenta su = new ServicioCuenta();
+        List<Cuenta> usuarios = su.obtenerListaCuentabyiduser("1");
+        int i = 0;
+
+        for (Cuenta u : usuarios) {
+            System.out.printf("%4d: %s,%n", ++i, u);
+        }
+        
+        System.out.print(su.obtenerTablaCuentas("1"));
+        
+        
+//        System.out.println(su.obtenerCuenta("1"));
 //        List<Cuenta> usuarios = su.obtenerListaCuenta();
 //        int i = 0;
 //        for (Cuenta u : usuarios) {
 //            System.out.printf("%4d: %s,%n", ++i, u);
 //        }
         
-        Cuenta usa = su.obtenerCuenta("1168");
+        Cuenta usa = su.obtenerCuenta("1");
+        
         System.out.printf("%s", usa.toString());
     }
+
     private static final String CMD_RECUPERAR_NC
             = "SELECT num_cuenta, tipo_cuenta_id_tipo_cuenta, cliente_id_cliente, moneda_nombre, fecha_creacion, limite_transferencia_diaria, activa, saldo_inicial, fecha_ultima_aplicacion, saldo_final FROM cuenta WHERE num_cuenta=?; ";
     private static final String CMD_RECUPERAR_ID

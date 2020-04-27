@@ -1,3 +1,13 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21-abr-2020, 20:55:52
+    Author     : Grelvin
+*/
+
 *{
     margin: 0px;
     padding: 0px;
@@ -99,11 +109,11 @@ nav{
 main{
     background: #e2e8de;
     min-height: 100vh;
-    display: none;
+    display: flex;
     align-items: center;
 }
 
-.info-cliente{
+.tabla-cuenta{
     width: 100%;
 }
 
@@ -113,8 +123,40 @@ main{
     padding: 0 20px;     
 }
 
+.tabla-cuenta h1{
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 500px;
+}
 
+.tabla-cuenta h1 strong{
+    color: #04395e;
+}
 
+.tablaCuentas{
+    position: absolute;
+    z-index: 2;
+    left: 35%;
+    top: 35%;
+    transform: translate(-30%,-30%);
+    width: 80%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(32,32,32,.3);
+    background: #fafafa;
+    text-align: center;
+}
 
+.tablaCuentas th,.tablaCuentas td{
+    padding: 12px 15px;
+}
 
+.tablaCuentas th{
+    background: #674172;
+    color: #fafafa;
+    text-transform: uppercase;
+}
 

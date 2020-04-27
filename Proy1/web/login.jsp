@@ -18,7 +18,7 @@
         <div class="imagen-gb"></div>
         <div class="box">
             <h2>Login</h2>
-            <form method ="GET" action ="Loginservice" >
+            <form method ="POST" action ="Loginservice" >
                 <div class="inputBox">
                     <input type="text" name="id" required="" autofocus="">
                     <label>Identificación</label>

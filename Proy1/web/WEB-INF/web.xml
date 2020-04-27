@@ -49,6 +49,14 @@
         </init-param>
     </servlet>
     <servlet>
+        <servlet-name>miCuenta</servlet-name>
+        <servlet-class>Servicios.miCuentaService</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>vincularService</servlet-name>
+        <servlet-class>Servicios.vincularService</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>DepositoserviceCaja</servlet-name>
         <servlet-class>Servicios.DepositoserviceCaja</servlet-class>
         <init-param>
@@ -136,13 +144,17 @@
         <servlet-name>Logoutservice</servlet-name>
         <url-pattern>/Logoutservice</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>miCuenta</servlet-name>
+        <url-pattern>/miCuenta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vincularService</servlet-name>
+        <url-pattern>/vincularService</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    <init-param>
-        <param-name>Cliente</param-name>
-        <param-value>WEB-INF/vista/Cliente.jsp</param-value>
-    </init-param>
 </web-app>

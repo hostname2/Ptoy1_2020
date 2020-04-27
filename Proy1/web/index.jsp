@@ -27,7 +27,7 @@
             </div>
             <nav>
                 <ul class="nav-links">
-                    <li><a class="nav-link" href="#">Contáctenos</a></li>
+                    <li><a class="nav-link" href="informacion.jsp">Información</a></li>
                 </ul>
             </nav>
             <div class="registro">

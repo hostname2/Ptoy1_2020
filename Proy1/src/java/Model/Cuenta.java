@@ -196,9 +196,10 @@ public class Cuenta {
     public void setId_cuenta(Integer id_cuenta) {
         this.id_cuenta = id_cuenta;
     }
-    
-    
 
+//    public String toString() {
+//        return String.format("{%s, %s, %s, %s, %s, %.2f, %d, %.2f, %s, %.2f}", getNumero_Cuneta(), getId_tipo_cuenta().toString(), getCliente().toString(), getMoneda().toString(), getFecha_creacion().toString(), getLimite_transferencia(), getActiva(), getSaldo_inicial(), getFecha_ultimaAplicacion().toString(), getSaldo_final());
+//    }
     public String toString() {
         return String.format("{%s, %s, %s, %s, %s, %.2f, %d, %.2f}", getNumero_Cuneta(), id_cuenta, id_cliente, id_moneda, getFecha_creacion().toString(), getLimite_transferencia(), getActiva(), getSaldo_inicial());
     }

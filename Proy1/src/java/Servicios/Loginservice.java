@@ -48,6 +48,8 @@ public class Loginservice extends HttpServlet {
         }
 
         if (flag) {
+            HttpSession sesion = request.getSession(true);
+            sesion.setAttribute("id", u);
             String destino = "index.jsp";
             c = sc.obtenerCliente(u.getId_usuario());
             HttpSession sesionActual = request.getSession(true);

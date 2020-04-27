@@ -13,13 +13,10 @@
     <head>
         <meta charset="UTF-8" />
         <title>Sistema Bancario</title>
-        <link href="css/cliente.css" rel="stylesheet" type="text/css"/>
+        <link href="css/cliente_1.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" charset="utf-8"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" charset="utf-8"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     </head>
     <body>
         <header>
@@ -71,14 +68,6 @@
                     </tr>
                 </table>
             </div>
-            <%--          <section class="seccion-servicios">
-                          <div class="inner-wigth">
-
-                </div>
-            </section>--%>
         </main>
     </body>
-    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="js/main.js"></script>
-
 </html>

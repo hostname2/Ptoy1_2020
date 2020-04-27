@@ -34,7 +34,7 @@ public class ServicioFavorita {
             try (ResultSet rs = stm.executeQuery()) {
                 if (rs.next()) {
                     r = new Favorita(
-                            rs.getString("clinete_id_cliente"),
+                            rs.getString("cliente_id_cliente"),
                             rs.getString("cuenta_num_cuenta")
                     );
                 }
@@ -56,7 +56,7 @@ public class ServicioFavorita {
                 ResultSet rs = stm.executeQuery(CMD_LISTAR)) {
             while (rs.next()) {
                 Favorita c = new Favorita(
-                            rs.getString("clinete_id_cliente"),
+                            rs.getString("cliente_id_cliente"),
                             rs.getString("cuenta_num_cuenta")
                 );
                 r.add(c);
@@ -104,10 +104,10 @@ public class ServicioFavorita {
     }
 
     public static void main(String[] args) {
-        ServicioMoneda su = new ServicioMoneda();
-        List<Moneda> usuarios = su.obtenerListaMonedas();
+        ServicioFavorita su = new ServicioFavorita();
+        List<Favorita> usuarios = su.obtenerListaFavorita();
         int i = 0;
-        for (Moneda u : usuarios) {
+        for (Favorita u : usuarios) {
             System.out.printf("%4d: %s,%n", ++i, u);
         }
     }

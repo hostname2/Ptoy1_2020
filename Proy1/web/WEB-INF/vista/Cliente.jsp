@@ -29,7 +29,6 @@
                     <li><a class="nav-link" href="miCuenta.jsp">Mi Cuenta</a></li>
                     <li><a class="nav-link" href="#">Transferencias</a></li>
                     <li><a class="nav-link" href="vincular.jsp">Vinculación</a></li>
-                    <li><a class="nav-link" href="#">Contáctenos</a></li>
                 </ul>
             </nav>
             <div class="registro">
