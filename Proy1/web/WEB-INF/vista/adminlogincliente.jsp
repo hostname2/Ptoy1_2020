@@ -27,6 +27,7 @@
                     <label>Clave de Acceso</label>
                 </div>
                 <input type="submit" name="" value="Login">
+                <input type="submit" formaction="CancelarserviceCaja" value="Cancelar">
             </form>
         </div>
     </body>

@@ -200,7 +200,7 @@ public class Cuenta {
     
 
     public String toString() {
-        return String.format("{%s, %s, %s, %s, %s, %.2f, %d, %.2f}", getNumero_Cuneta(), getId_tipo_cuenta().toString(), getCliente().toString(), getMoneda().toString(), getFecha_creacion().toString(), getLimite_transferencia(), getActiva(), getSaldo_inicial());
+        return String.format("{%s, %s, %s, %s, %s, %.2f, %d, %.2f}", getNumero_Cuneta(), id_cuenta, id_cliente, id_moneda, getFecha_creacion().toString(), getLimite_transferencia(), getActiva(), getSaldo_inicial());
     }
 
     String numero_Cuneta;

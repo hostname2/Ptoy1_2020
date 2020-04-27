@@ -88,6 +88,39 @@ public class ServicioCuenta {
         return r;
     }
 
+    public List<Cuenta> obtenerListaCuentabyiduser(String id) {
+        List<Cuenta> r = new ArrayList<>();
+        try (Connection cnx = obtenerConexion();
+                PreparedStatement stm = cnx.prepareStatement(CMD_RECUPERAR_ID);) {
+            stm.clearParameters();
+            stm.setString(1, id);
+            try (ResultSet rs = stm.executeQuery()) {
+                while (rs.next()) {
+                    Cuenta c = new Cuenta(
+                            rs.getString("num_cuenta"),
+                            rs.getDate("fecha_creacion"),
+                            rs.getDate("fecha_ultima_aplicacion"),
+                            rs.getDouble("limite_transferencia_diaria"),
+                            rs.getInt("activa"),
+                            rs.getDouble("saldo_final"),
+                            rs.getDouble("saldo_final"),
+                            rs.getString("cliente_id_cliente"),
+                            rs.getString("moneda_nombre"),
+                            rs.getInt("tipo_cuenta_id_tipo_cuenta")
+                    );
+                    r.add(c);
+                }
+            }
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
+        return r;
+    }
+
     public List<Cuenta> obtenerListaCuenta() {
         List<Cuenta> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
@@ -177,11 +210,14 @@ public class ServicioCuenta {
 
     public static void main(String[] args) {
         ServicioCuenta su = new ServicioCuenta();
-        List<Cuenta> usuarios = su.obtenerListaCuenta();
-        int i = 0;
-        for (Cuenta u : usuarios) {
-            System.out.printf("%4d: %s,%n", ++i, u);
-        }
+//        List<Cuenta> usuarios = su.obtenerListaCuenta();
+//        int i = 0;
+//        for (Cuenta u : usuarios) {
+//            System.out.printf("%4d: %s,%n", ++i, u);
+//        }
+        
+        Cuenta usa = su.obtenerCuenta("1168");
+        System.out.printf("%s", usa.toString());
     }
     private static final String CMD_RECUPERAR_NC
             = "SELECT num_cuenta, tipo_cuenta_id_tipo_cuenta, cliente_id_cliente, moneda_nombre, fecha_creacion, limite_transferencia_diaria, activa, saldo_inicial, fecha_ultima_aplicacion, saldo_final FROM cuenta WHERE num_cuenta=?; ";

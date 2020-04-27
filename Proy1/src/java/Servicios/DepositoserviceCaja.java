@@ -5,8 +5,10 @@
  */
 package Servicios;
 
+import Model.Cliente;
 import Model.Cuenta;
 import Model.Dao.ServicioCuenta;
+import Model.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -26,7 +28,10 @@ public class DepositoserviceCaja extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
+        Cliente cl = (Cliente) request.getAttribute("registroCliente");
+        request.setAttribute("registroCliente", cl);
+        
         String num_cuenta = request.getParameter("num_cuenta");
         String cantidad = request.getParameter("deposito");
         Integer deposito = 0;

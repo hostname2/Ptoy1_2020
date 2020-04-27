@@ -5,8 +5,12 @@
  */
 package Servicios;
 
+import Model.Cliente;
+import Model.Dao.ServicioCliente;
 import Model.Dao.ServicioUsuario;
 import Model.Usuario;
+import beans.BeanUsuario;
+import beans.Clientebean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -15,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -29,7 +34,7 @@ public class Loginservice extends HttpServlet {
 
         boolean flag = true;
         Usuario u = null;
-
+        Cliente c = null;
         String id_usuario = request.getParameter("id");
         String usuario_password = request.getParameter("id-password");
 
@@ -37,21 +42,32 @@ public class Loginservice extends HttpServlet {
         if (id_usuario != null && usuario_password != null) {
             u = servicio.obtenerUsuario(id_usuario);
             flag = this.valida(u, id_usuario, usuario_password);
+
         } else {
             flag = false;
         }
 
         if (flag) {
             String destino = "index.jsp";
+            c = sc.obtenerCliente(u.getId_usuario());
+            HttpSession sesionActual = request.getSession(true);
             switch (u.getRol()) {
 
                 case 0:
+                    
+                    sesionActual.setAttribute("Administrador", new Clientebean(c));
+                    sesionActual.setAttribute("usuario", new BeanUsuario(u));
                     destino = "/WEB-INF/vista/Administrador.jsp";
                     request.setAttribute("registroUsuario", u);
+                    request.setAttribute("registroCliente", c);
                     break;
                 case 1:
+
+                    sesionActual.setAttribute("clientelog",new Clientebean(c));
+                    sesionActual.setAttribute("usuario", new BeanUsuario(u));
                     destino = "/WEB-INF/vista/Cliente.jsp";
                     request.setAttribute("registroUsuario", u);
+                    request.setAttribute("registroCliente", c);
                     break;
                 default:
                     System.err.printf("La operación seleccionada es incorrecta: %d%n", u.getRol());
@@ -65,7 +81,7 @@ public class Loginservice extends HttpServlet {
     private boolean valida(Usuario u, String id, String clave) {
         return (u.getId_usuario().equals(id) && u.getClave_acceso().equals(clave));
     }
-
+    private final ServicioCliente sc = new ServicioCliente();
     private final ServicioUsuario servicio = new ServicioUsuario();
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,0 +1,71 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 26/04/2020, 02:19:59 PM
+    Author     : sebas
+*/
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: #deb8875e;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+header{
+    margin: 10px;
+    padding: 10px;
+    background-color: bisque;
+}
+
+h1{
+    display: flex;
+    width: 80%;
+    height: 10vh;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    background-color: bisque;
+}
+
+div .contents{
+    border: 2px solid darkred;
+}
+
+
+contents form .info {
+    width: 100%;
+    border: 2px solid;
+    padding: 5px;
+}
+
+.info{
+    width: 100%;
+}
+
+.tablaDatos{
+    width: 100%;
+    border: 2px solid lightblue;
+    padding: 5px;
+}
+
+
+.tablaDatos td{
+    border: 2px solid lightblue;       
+}
+
+.Col1{
+    text-align: right;
+}
+
+.btn1{
+    position: absolute;
+    right: 890px;
+    top: 270px;
+}

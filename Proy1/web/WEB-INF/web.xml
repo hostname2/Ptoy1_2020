@@ -84,6 +84,18 @@
             <param-value>WEB-INF/vista/Administrador.jsp</param-value>
         </init-param>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutserviceCaja</servlet-name>
+        <servlet-class>Servicios.LogoutserviceCaja</servlet-class>
+        <init-param>
+            <param-name>Administrador</param-name>
+            <param-value>WEB-INF/vista/Administrador.jsp</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>Logoutservice</servlet-name>
+        <servlet-class>Servicios.Logoutservice</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Loginservice</servlet-name>
         <url-pattern>/Loginservice</url-pattern>
@@ -115,6 +127,14 @@
     <servlet-mapping>
         <servlet-name>TransferenciaserviceCaja</servlet-name>
         <url-pattern>/TransferenciaserviceCaja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutserviceCaja</servlet-name>
+        <url-pattern>/LogoutserviceCaja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logoutservice</servlet-name>
+        <url-pattern>/Logoutservice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
