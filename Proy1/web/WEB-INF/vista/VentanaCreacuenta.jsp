@@ -12,7 +12,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Caja</title>
+        <link href="css/registroC.css" rel="stylesheet" type="text/css"/>
     </head>
     <jsp:useBean class="beans.Clientebean" id="cliente" scope="session"></jsp:useBean>
         <body>
@@ -105,12 +106,12 @@
                             </td>                            
                         </tr>
                         <tr>
-                        <td>
-                            <button type="submit">Crear Cuenta</button>
-                        </td>
-                        <td>
-                            <button formaction="CancelarserviceCaja">Cancelar</button>
-                        </td>
+                            <td>
+                                <button type="submit">Crear Cuenta</button>
+                            </td>
+                            <td>
+                                <button formaction="CancelarserviceCaja">Cancelar</button>
+                            </td>
                         </tr>
                     </table>
                 </form>

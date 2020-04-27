@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Caja</title>
+        <link href="css/registroC.css" rel="stylesheet" type="text/css"/>
     </head>
     <jsp:useBean class="beans.Clientebean" id="cliente" scope="session"></jsp:useBean>
         <body>
@@ -27,37 +28,46 @@
                                 <td class ="Col1">Seleccione cuenta</td>
                                 <td class="Col2">
                                     <select  name ="num_cuenta1">
-                                <%
-                                    final ServicioCuenta sc = new ServicioCuenta();
-                                    List<Cuenta> listac = sc.obtenerListaCuentabyiduser(cliente.getUsuario().getId_Cliente());
-                                    if (listac != null) {
-                                        for (Cuenta c : listac) {
-                                            out.println(String.format("\t\t<option value=\"%s\">%s</option>", c.getNumero_Cuneta(), c.getNumero_Cuneta()));
+                                    <%
+                                        final ServicioCuenta sc = new ServicioCuenta();
+                                        if (cliente.getUsuario() != null) {
+                                            List<Cuenta> listac = sc.obtenerListaCuentabyiduser(cliente.getUsuario().getId_Cliente());
+                                            if (listac != null) {
+                                                for (Cuenta c : listac) {
+                                                    out.println(String.format("\t\t<option value=\"%s\">%s</option>", c.getNumero_Cuneta(), c.getNumero_Cuneta()));
+                                                }
+                                            } else {
+                                                out.println(String.format("\t\t<option>%s</option>", "No hay cuentas registradas"));
+                                            }
                                         }
-                                    } else {
-                                        out.println(String.format("\t\t<option>%s</option>", "No hay cuentas registradas"));
-                                    }
-
-                                %>
-                                    </select>
+                                    %>
+                                </select>
                             </td>
+                        </tr>
+                        <tr>
                             <td class ="Col1">Numero de cuenta a transferir</td>
                             <td class="Col2">
                                 <input type ="text" name ="num_cuenta2" autofocus ="autofocus" placeholder="digite numero de cuenta"/>
-                            </td>                            
+                            </td> 
+                        </tr>
+                        <tr>
                             <%--Hacer un menu o combo box de las cuentas que tiene--%>
                             <td class ="Col1">Cantidad a transferir</td>
                             <td class="Col2">
                                 <input type ="text" name ="transferencia"  placeholder="cantidad"/>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <button type="submit">Transferir</button>
+                            </td>
+                            <td>
+                                <button formaction="CancelarserviceCaja">Cancelar</button>
+                            </td>
+                        </tr>
+
                     </table>
-                    <p>
-                        <button type="submit">retirar</button>
-                    </p>
-                    <p>
-                        <button formaction="CancelarserviceCaja">Cancelar</button>
-                    </p>
+
                 </form>
             </div>
         </div>

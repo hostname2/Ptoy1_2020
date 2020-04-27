@@ -30,15 +30,16 @@
                                     <select name ="num_cuenta">
                                     <%
                                         final ServicioCuenta sc = new ServicioCuenta();
-                                        List<Cuenta> listac = sc.obtenerListaCuentabyiduser(cliente.getUsuario().getId_Cliente());
-                                        if (listac != null) {
-                                            for (Cuenta c : listac) {
-                                                out.println(String.format("\t\t<option value=\"%s\">%s</option>", c.getNumero_Cuneta(), c.getNumero_Cuneta()));
+                                        if (cliente.getUsuario() != null) {
+                                            List<Cuenta> listac = sc.obtenerListaCuentabyiduser(cliente.getUsuario().getId_Cliente());
+                                            if (listac != null) {
+                                                for (Cuenta c : listac) {
+                                                    out.println(String.format("\t\t<option value=\"%s\">%s</option>", c.getNumero_Cuneta(), c.getNumero_Cuneta()));
+                                                }
+                                            } else {
+                                                out.println(String.format("\t\t<option>%s</option>", "No hay cuentas registradas"));
                                             }
-                                        } else {
-                                            out.println(String.format("\t\t<option>%s</option>", "No hay cuentas registradas"));
                                         }
-
                                     %>
                                 </select>
                         </tr>
@@ -49,13 +50,16 @@
                                 <input type ="text" name ="retiro"  placeholder="Cantidad"/>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <button class ="btn" type="submit">retirar</button>
+                            </td>
+                            <td>
+                                <button calss="bt2" formaction="CancelarserviceCaja">Cancelar</button>
+                            </td>
+                        </tr>
                     </table>
-                    <p>
-                        <button class ="btn1" type="submit">retirar</button>
-                    </p>
-                    <p>
-                        <button calss="bt2" formaction="CancelarserviceCaja">Cancelar</button>
-                    </p>
+
                 </form>
             </div>
         </div>
